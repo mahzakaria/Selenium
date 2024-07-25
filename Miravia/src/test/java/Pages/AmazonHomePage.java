@@ -10,7 +10,7 @@ public class AmazonHomePage extends BasePage {
      private String searchButton = "//div[contains(@class,'global_search')]";
      private String thirdItem  ="//body/div[@id='root_page_container']/div[@class='container--jCaTxNqV pc']/div[@class='lContent--pC3_VymR']/div[@class='lMain--LLuqwU7S']/div/div[@class='mGoodsList--I3XeDneu']/div[3]/a[1]/div[1]/div[1]";
      private String addToCartButton="//div[@class='qnyKfgP8am']//button[@type='button'][normalize-space()='Comprar ya']//div[@class='iweb-button-mask']";
-     private String addToCartMessagelocator = "//span[normalize-space()='Continuar con Facebook']";
+     private String addToCartMessagelocator = "//div[@data-spm=\"login_button_click\"]";
 
     public AmazonHomePage(){
         super(driver);
