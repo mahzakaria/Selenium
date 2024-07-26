@@ -34,6 +34,9 @@ public class BasePage {
      * WebDriverManager va a estar descargando y configurando automáticamente el driver del navegador
     */
     protected static WebDriver driver;
+    
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
     static { 
         String driverPath = "Miravia/src/test/resources/chromedriver/";
         System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
