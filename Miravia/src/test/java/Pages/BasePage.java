@@ -10,6 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,26 +20,36 @@ public class BasePage {
     /*
      * Declaración de una variable estática 'driver' de tipo WebDriver
      * Esta variable va a ser compartida por todas las instancias de BasePage y sus subclases
-     */
+     
     protected static WebDriver driver;
     /*
      * Declaración de una variable de instancia 'wait' de tipo WebDriverWait.
      * Se inicializa inmediatamente con una instancia dew WebDriverWait utilizando el 'driver' estático
      * WebDriverWait se usa para poner esperas explícitas en los elementos web
-     */
+     
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
  
     /* 
      * Configura el WebDriver para Chrome usando WebDriverManager.
      * WebDriverManager va a estar descargando y configurando automáticamente el driver del navegador
     */
-    static {
-        WebDriverManager.chromedriver().setup();
+    protected static WebDriver driver;
+    static { 
+        String driverPath = "Miravia/src/test/resources/chromedriver/";
+        System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--start-maximized");
+            options.addArguments("--ignore-certificate-errors");
+            options.addArguments("--disable-popup-blocking");
+            options.addArguments("--incognito");
+    
+                
  
         //Inicializa la variable estática 'driver' con una instancia de ChromeDriver
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
+
  
     /*
      * Este es el constructor de BasePage que acepta un objeto WebDriver como argumento.
