@@ -20,39 +20,32 @@ public class BasePage {
     /*
      * Declaración de una variable estática 'driver' de tipo WebDriver
      * Esta variable va a ser compartida por todas las instancias de BasePage y sus subclases
-     
+     */
+
     protected static WebDriver driver;
+
     /*
      * Declaración de una variable de instancia 'wait' de tipo WebDriverWait.
      * Se inicializa inmediatamente con una instancia dew WebDriverWait utilizando el 'driver' estático
      * WebDriverWait se usa para poner esperas explícitas en los elementos web
-     
+     */
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
  
     /* 
      * Configura el WebDriver para Chrome usando WebDriverManager.
      * WebDriverManager va a estar descargando y configurando automáticamente el driver del navegador
     */
-    protected static WebDriver driver;
-    
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    static {
+        WebDriverManager.chromedriver().setup();
 
-    static { 
-        String driverPath = "/src/test/resources/chromedriver/";
-        System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--start-maximized");
-            options.addArguments("--ignore-certificate-errors");
-            options.addArguments("--disable-popup-blocking");
-            options.addArguments("--incognito");
-    
-                
- 
-        //Inicializa la variable estática 'driver' con una instancia de ChromeDriver
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        // Configure ChromeOptions
+        ChromeOptions chromeOptions = new ChromeOptions();
+         chromeOptions.addArguments("--incognito");
+            
+            // Initialize ChromeDriver with options
+        driver = new ChromeDriver(chromeOptions);
+        //driver.manage().window().maximize();
     }
-
  
     /*
      * Este es el constructor de BasePage que acepta un objeto WebDriver como argumento.
