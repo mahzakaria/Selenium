@@ -38,7 +38,7 @@ public class BasePage {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     static { 
-        String driverPath = "Miravia/src/test/resources/chromedriver/";
+        String driverPath = "/src/test/resources/chromedriver/";
         System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
