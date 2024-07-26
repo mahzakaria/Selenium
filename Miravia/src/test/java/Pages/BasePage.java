@@ -40,7 +40,9 @@ public class BasePage {
 
         // Configure ChromeOptions
         ChromeOptions chromeOptions = new ChromeOptions();
-         chromeOptions.addArguments("--incognito");
+        chromeOptions.addArguments("--incognito");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
             
             // Initialize ChromeDriver with options
         driver = new ChromeDriver(chromeOptions);
